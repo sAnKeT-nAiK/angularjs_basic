@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="cdn/angularjs/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="cdn/bootstrap/bootstrap.css">
+	<script src="code.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+	<title>home</title>
+</head>
+<body>
+<div ng-app="app" ng-controller="myCtrl" ng-init="">
+
+	enter: <input type="text" ng-model="fname">
+	<h1>{{fname+" "+lname | uppercase}}</h1>
+
+	<h2>{{person.lname}}</h2>
+
+	<h3 ng-repeat="x in points">{{x | currency}}</h3>
+	<h4 ng-repeat="i in person">{{i.fname+" "+i.lname}}</h4>
+	<input type="text" ng-model="abcd" name="">
+	<my-directive></my-directive>
+	<div my-directive></div>
+	
+
+	<h1 ng-click="demo()">{{val}}</h1>
+
+	<h2>{{getdata()}}</h2>
+
+	<h3 ng-repeat="x in con | orderBy:'country'">{{x.name+'--'+x.country}}</h3>
+
+	enter to sort: <input type="text" ng-model="test">
+
+	<ul>
+   <li ng-repeat="x in data | filter : test">
+    {{ x }}
+   </li>
+   </ul>
+
+   <h1>{{myUrl}}</h1>
+   
+   <h1>{{myheader}}</h1>
+   <h1>{{time}}</h1>
+
+   <h1>{{content}}</h1>
+   <h1>{{statuscode}}</h1>
+   <h1>{{statustext}}</h1>
+   <br> <br>
+
+    <h4 ng-repeat="i in jsondata">{{i.Name+"-"+i.City}}</h4>
+
+    <table border="1">
+    	<tr>
+    		<th>Index</th>
+    		<th>name</th>
+    		<th>Country</th>
+    	</tr>
+    	<tr ng-repeat="j in jsondata|orderBy:'Country'">
+    		<td>{{$index+1}}</td>
+    		<td>{{j.Name }}</td>
+    		<td>{{j.Country | uppercase}}</td>
+    	</tr>
+    </table>
+
+<!-- ng-disabled is used to disable the button -->
+    <div ng-init="switch=true">
+    	<button ng-disabled="switch">click me</button>
+    	<input type="checkbox" ng-model="switch">Click
+    	<br>
+    	{{switch}}
+    </div>
+<!-- ng-show  -->
+	<div>
+
+		<h1 ng-show="show">i am visable</h1>
+		<input type="checkbox" ng-model="show">click here 
+		
+	</div>
+	<!-- to count the data -->
+
+	<h1 ng-mousemove="count()">Mouse over this part</h1>
+
+	<h2>{{val1}}</h2>
+<!-- show and hind in ng click -->
+<button ng-click="myd()">Click Me!</button>
+
+<div ng-show="showMe">
+    <h1>Menu:</h1>
+    <div>Pizza</div>
+    <div>Pasta</div>
+    <div>Pesce</div>
+</div>
+
+<!-- ng switch using -->
+<form>
+  Pick a topic:
+  <input type="radio" ng-model="myVar" value="dogs">Dogs
+  <input type="radio" ng-model="myVar" value="tuts">Tutorials
+  <input type="radio" ng-model="myVar" value="cars">Cars
+</form>
+
+<div ng-switch="myVar">
+  <div ng-switch-when="dogs">
+     <h1>Dogs</h1>
+     <p>Welcome to a world of dogs.</p>
+  </div>
+  <div ng-switch-when="tuts">
+     <h1>Tutorials</h1>
+     <p>Learn from examples.</p>
+  </div>
+  <div ng-switch-when="cars">
+     <h1>Cars</h1>
+     <p>Read about cars.</p>
+  </div>
+</div>
+<!-- ruite -->
+<p><a href="#/!">Main</a></p>
+<a href="#!photos">route page without refresh</a>
+<!-- <div ng-view></div> -->
+<ng-view></ng-view>
+</div>
+</body>
+</html>
